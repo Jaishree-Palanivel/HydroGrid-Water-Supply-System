@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HydroGrid - Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f9; }
+        .nav { background: #007bff; padding: 15px; color: white; margin-bottom: 20px; }
+        .nav a { color: white; margin-right: 15px; text-decoration: none; font-weight: bold; }
+        .card { background: white; padding: 20px; margin: 10px; border-radius: 8px; display: inline-block; width: 250px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h2>HydroGrid Portal</h2>
+        <a href="/">Dashboard</a>
+        <a href="/consumers">Consumers</a>
+        <a href="/complaints">Pipeline Complaints</a>
+    </div>
+    <h1>System Summary</h1>
+    <div class="card">
+        <h3>Total Consumers</h3>
+        <p>{{ consumers }}</p>
+    </div>
+    <div class="card">
+        <h3>Active Pipeline Leaks</h3>
+        <p>{{ complaints }}</p>
+    </div>
+    <div class="card">
+        <h3>Total Revenue Collected</h3>
+        <p>₹ {{ revenue }}</p>
+    </div>
+</body>
+</html>
