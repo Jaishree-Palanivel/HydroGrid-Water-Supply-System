@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HydroGrid - Consumers</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f9; }
+        .nav { background: #007bff; padding: 15px; color: white; margin-bottom: 20px; }
+        .nav a { color: white; margin-right: 15px; text-decoration: none; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background: #007bff; color: white; }
+        form { background: white; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        input, select { margin: 5px; padding: 8px; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h2>HydroGrid Portal</h2>
+        <a href="/">Dashboard</a>
+        <a href="/consumers">Consumers</a>
+        <a href="/complaints">Pipeline Complaints</a>
+    </div>
+
+    <h2>Register New Consumer (INSERT)</h2>
+    <form action="/add_consumer" method="POST">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="phone" placeholder="Phone" required>
+        <input type="text" name="address" placeholder="Address" required>
+        <select name="connection_type">
+            <option value="Residential">Residential</option>
+            <option value="Commercial">Commercial</option>
+        </select>
+        <button type="submit">Add Consumer</button>
+    </form>
+
+    <h2>Registered Consumers (SELECT / VIEW)</h2>
+    <table>
+        <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Address</th><th>Type</th><th>Action</th>
+        </tr>
+        {% for c in consumers %}
+        <tr>
+            <td>{{ c.consumer_id }}</td>
+            <td>{{ c.name }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.phone }}</td>
+            <td>{{ c.address }}</td>
+            <td>{{ c.connection_type }}</td>
+            <td><a href="/delete_consumer/{{ c.consumer_id }}" style="color:red;">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
